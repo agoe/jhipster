@@ -1,0 +1,34 @@
+
+application {
+  config {
+    baseName myApp,
+    applicationType monolith,
+    packageName com.myapp,
+    authenticationType jwt,
+    prodDatabaseType mysql,
+    clientFramework angular
+  }
+  entities *
+}
+entity Users {
+        id String required
+        Name Long required
+}
+entity Posts {
+        id String required
+        Title Long required
+}
+entity Categories {
+        id String required
+        Name Long required maxlength(20)required
+}
+
+
+
+
+relationship OneToMany {
+  Customer to OrderMaster
+  Users to Posts
+  Categories to Posts
+}
+    
