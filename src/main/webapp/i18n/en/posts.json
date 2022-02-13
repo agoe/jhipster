@@ -1,0 +1,26 @@
+{
+  "myApp": {
+    "posts": {
+      "home": {
+        "title": "Posts",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Posts",
+        "createOrEditLabel": "Create or edit a Posts",
+        "notFound": "No Posts found"
+      },
+      "created": "A new Posts is created with identifier {{ param }}",
+      "updated": "A Posts is updated with identifier {{ param }}",
+      "deleted": "A Posts is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Posts {{ id }}?"
+      },
+      "detail": {
+        "title": "Posts"
+      },
+      "id": "Id",
+      "title": "Title",
+      "users": "Users",
+      "categories": "Categories"
+    }
+  }
+}
