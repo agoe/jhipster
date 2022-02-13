@@ -1,0 +1,88 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-posts-heading" data-cy="PostsCreateUpdateHeading" jhiTranslate="myApp.posts.home.createOrEditLabel">
+        Create or edit a Posts
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myApp.posts.id" for="field_id">Id</label>
+          <input
+            type="text"
+            class="form-control"
+            name="id"
+            id="field_id"
+            data-cy="id"
+            formControlName="id"
+            [readonly]="editForm.get('id')!.value != null"
+          />
+          <div *ngIf="editForm.get('id')!.invalid && (editForm.get('id')!.dirty || editForm.get('id')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('id')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myApp.posts.title" for="field_title">Title</label>
+          <input type="number" class="form-control" name="title" id="field_title" data-cy="title" formControlName="title" />
+          <div *ngIf="editForm.get('title')!.invalid && (editForm.get('title')!.dirty || editForm.get('title')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('title')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('title')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myApp.posts.users" for="field_users">Users</label>
+          <select class="form-control" id="field_users" data-cy="users" name="users" formControlName="users">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="usersOption.id === editForm.get('users')!.value?.id ? editForm.get('users')!.value : usersOption"
+              *ngFor="let usersOption of usersSharedCollection; trackBy: trackUsersById"
+            >
+              {{ usersOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myApp.posts.categories" for="field_categories">Categories</label>
+          <select class="form-control" id="field_categories" data-cy="categories" name="categories" formControlName="categories">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                categoriesOption.id === editForm.get('categories')!.value?.id ? editForm.get('categories')!.value : categoriesOption
+              "
+              *ngFor="let categoriesOption of categoriesSharedCollection; trackBy: trackCategoriesById"
+            >
+              {{ categoriesOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

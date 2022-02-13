@@ -1,0 +1,39 @@
+{
+  "applications": ["myApp"],
+  "changelogDate": "20220213004211",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "posts",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "title",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Posts",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "users",
+      "otherEntityRelationshipName": "posts",
+      "relationshipName": "users",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "categories",
+      "otherEntityRelationshipName": "posts",
+      "relationshipName": "categories",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

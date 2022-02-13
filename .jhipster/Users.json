@@ -1,0 +1,33 @@
+{
+  "applications": ["myApp"],
+  "changelogDate": "20220213004111",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "users",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Users",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "posts",
+      "otherEntityRelationshipName": "users",
+      "relationshipName": "posts",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

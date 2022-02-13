@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="posts">
+      <h2 data-cy="postsDetailsHeading"><span jhiTranslate="myApp.posts.detail.title">Posts</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="myApp.posts.id">Id</span></dt>
+        <dd>
+          <span>{{ posts.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="myApp.posts.title">Title</span></dt>
+        <dd>
+          <span>{{ posts.title }}</span>
+        </dd>
+        <dt><span jhiTranslate="myApp.posts.users">Users</span></dt>
+        <dd>
+          <div *ngIf="posts.users">
+            <a [routerLink]="['/users', posts.users?.id, 'view']">{{ posts.users?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="myApp.posts.categories">Categories</span></dt>
+        <dd>
+          <div *ngIf="posts.categories">
+            <a [routerLink]="['/categories', posts.categories?.id, 'view']">{{ posts.categories?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/posts', posts.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
